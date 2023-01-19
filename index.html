@@ -124,8 +124,6 @@
         <input type="text" disabled v-model="coverImgUrl">
         <!-- --------------- -->
         <h1>ウェブサポート</h1>
-        <label for="pageName">サポートページ名</label>
-        <input type="text" id="pageName" v-model="pageName">
         <!-- --------------- -->
         <h2>URL</h2>
         <div class="horizon">
@@ -169,6 +167,9 @@
                 <input type="text" disabled v-model="supportPageUrlForLimited">
             </li>
         </ul>
+        <h2>サポートページ名</h2>
+        <input type="text" id="pageName" v-model="pageName">
+        <!-- --------------- -->
         <h2>ページタイトル</h2>
         <div><img src="./images/new-support-page-title.png" alt="new-support-page-title.png"></div>
         <input type="text" disabled v-model="supportPageTitle">
