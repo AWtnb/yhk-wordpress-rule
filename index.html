@@ -10,6 +10,14 @@
     <style>
         input[type="text"]:disabled {
             width: 100%;
+            cursor: auto;
+            color: #f17547;
+            opacity: 1;
+        }
+        @media (prefers-color-scheme: light) {
+            input[type="text"]:disabled {
+                color: #ff4500;
+            }
         }
 
         body {
@@ -27,6 +35,11 @@
 
         img {
             border-radius: 4px;
+        }
+        @media (prefers-color-scheme: light) {
+            img {
+                box-shadow: 1px 1px 5px 1px #aaa;
+            }
         }
 
         .horizon {
