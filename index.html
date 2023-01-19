@@ -45,6 +45,14 @@
         .horizon {
             display: flex;
         }
+        .horizon div {
+            margin-right: 20px;
+        }
+        .horizon div input,
+        .horizon div select {
+            min-width: 40%;
+        }
+
     </style>
     <title>WordPress 記入ルール</title>
 </head>
@@ -120,6 +128,37 @@
         <input type="text" id="pageName" v-model="pageName">
         <!-- --------------- -->
         <h2>URL</h2>
+        <div class="horizon">
+            <div>
+                <label for="supportIdx">目次ページ（＝サイドバー）の何番目に表示するか：</label>
+                <select id="supportIdx" v-model="supportIdx">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                </select>
+            </div>
+            <div>
+                <label>末尾に追加したい文字（空欄可）：</label>
+                <input type="text" v-model="trailing">
+            </div>
+        </div>
         <ul>
             <li>
                 <label>一般用</label>
@@ -174,6 +213,8 @@
                 return {
                     userInputBookTitle: "心理学スタディメイト",
                     userInputFivecode: "20002",
+                    supportIdx: "1",
+                    trailing: "movie",
                     pageName: "Chapter structure"
                 }
             },
@@ -217,11 +258,14 @@
                 supportPageTitle: function () {
                     return this.bookTitle + "　" + this.pageName.trim();
                 },
+                supportPageIdx: function () {
+                    return ("0" + this.supportIdx).slice(-2);
+                },
                 supportPageUrlForGenelal: function () {
-                    return `https://www.yuhikaku.co.jp/yuhikaku_pr/y-knot/ws/${this.fivecode}p_01/`;
+                    return `https://www.yuhikaku.co.jp/yuhikaku_pr/y-knot/ws/${this.fivecode}p_${this.supportPageIdx}${this.trailing}/`;
                 },
                 supportPageUrlForLimited: function () {
-                    return `https://www.yuhikaku.co.jp/yuhikaku_pr/y-knot/ws/${this.fivecode}t_01/`;
+                    return `https://www.yuhikaku.co.jp/yuhikaku_pr/y-knot/ws/${this.fivecode}t_${this.supportPageIdx}${this.trailing}/`;
                 },
                 coverImgUrl: function () {
                     return `https://www.yuhikaku.co.jp/uploads/images/L${this.fivecode}.jpg`;
