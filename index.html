@@ -13,6 +13,7 @@
 
 <body>
     <div id="app">
+        <!-- --------------- -->
         <div class="horizon">
             <div>
                 <label for="userInputBookTitle">書名</label>
@@ -27,28 +28,24 @@
         <h1>目次</h1>
         <h2>書籍の新規登録</h2>
         <div><img src="./images/new-book-category.png" alt="new-book-category.png"></div>
-        <label>名前</label>
-        <input-example :example="simplest"></input-example>
-        <label>スラッグ</label>
-        <input-example :example="isbn13"></input-example>
+        <input-example :example="simplest">名前</input-example>
+        <input-example :example="isbn13">スラッグ</input-example>
         <!-- --------------- -->
         <h2>URL</h2>
         <ul>
             <li>
-                <label>一般用</label>
-                <input-example :example="mokujiPageUrlForGenelal"></input-example>
+                <input-example :example="mokujiPageUrlForGenelal">一般用</input-example>
             </li>
             <li>
-                <label>先生用</label>
-                <input-example :example="mokujiPageUrlForLimited"></input-example>
+                <input-example :example="mokujiPageUrlForLimited">先生用</input-example>
             </li>
         </ul>
         <!-- --------------- -->
         <h2>ページタイトル</h2>
         <div><img src="./images/new-mokuji-page-title.png" alt="new-mokuji-page-title.png"></div>
         <ul>
-            <li><input-example :example="mokujiPageTitleForGenelal"></input-example></li>
-            <li><input-example :example="mokujiPageTitleForLimited"></input-example></li>
+            <li><input-example :example="mokujiPageTitleForGenelal">一般用</input-example></li>
+            <li><input-example :example="mokujiPageTitleForLimited">先生用</input-example></li>
         </ul>
         <!-- --------------- -->
         <h2>カスタムフィールドテンプレート</h2>
@@ -56,13 +53,12 @@
         <ul>
             <li>記事見出し
                 <ul>
-                    <li><input-example :example="mokujiArticleTitleForGenelal"></input-example></li>
-                    <li><input-example :example="mokujiArticleTitleForLimited"></input-example></li>
+                    <li><input-example :example="mokujiArticleTitleForGenelal">一般用</input-example></li>
+                    <li><input-example :example="mokujiArticleTitleForLimited">先生用</input-example></li>
                 </ul>
             </li>
             <li>
-                <label>書籍名</label>
-                <input-example :example="simplest"></input-example>
+                <input-example :example="simplest">書籍名</input-example>
             </li>
         </ul>
         <!-- --------------- -->
@@ -70,8 +66,8 @@
         <h3><code>Title</code></h3>
         <div><img src="./images/new-seo-title.png" alt="new-seo-title.png"></div>
         <ul>
-            <li><input-example :example="mokujiPageTitleForGenelal"></input-example></li>
-            <li><input-example :example="mokujiPageTitleForLimited"></input-example></li>
+            <li><input-example :example="mokujiPageTitleForGenelal">一般用</input-example></li>
+            <li><input-example :example="mokujiPageTitleForLimited">先生用</input-example></li>
         </ul>
         <h3><code>Custom Image</code></h3>
         <div><img src="./images/new-custom-image.png" alt="new-custom-image.png"></div>
@@ -113,12 +109,10 @@
         </div>
         <ul>
             <li>
-                <label>一般用</label>
-                <input-example :example="supportPageUrlForGenelal"></input-example>
+                <input-example :example="supportPageUrlForGenelal">一般用</input-example>
             </li>
             <li>
-                <label>先生用</label>
-                <input-example :example="supportPageUrlForLimited"></input-example>
+                <input-example :example="supportPageUrlForLimited">先生用</input-example>
             </li>
         </ul>
         <h2>サポートページ名</h2>
@@ -185,8 +179,13 @@
             },
             template: `
             <div class="input-example">
-                <input type="text" disabled :value=example>
-                <copy-button :content="example">COPY</copy-button>
+                <label>
+                    <slot></slot>
+                </label>
+                <div class="box">
+                    <input type="text" disabled :value=example>
+                    <copy-button :content="example">COPY</copy-button>
+                </div>
             </div>
             `
         };
