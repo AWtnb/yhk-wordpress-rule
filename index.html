@@ -44,8 +44,12 @@
         <h2>ページタイトル</h2>
         <div><img src="./images/new-mokuji-page-title.png" alt="new-mokuji-page-title.png"></div>
         <ul>
-            <li><input-example :example="mokujiPageTitleForGenelal">一般用</input-example></li>
-            <li><input-example :example="mokujiPageTitleForLimited">先生用</input-example></li>
+            <li>
+                <input-example :example="mokujiPageTitleForGenelal">一般用</input-example>
+            </li>
+            <li>
+                <input-example :example="mokujiPageTitleForLimited">先生用</input-example>
+            </li>
         </ul>
         <!-- --------------- -->
         <h2>カスタムフィールドテンプレート</h2>
@@ -53,8 +57,12 @@
         <ul>
             <li>記事見出し
                 <ul>
-                    <li><input-example :example="mokujiArticleTitleForGenelal">一般用</input-example></li>
-                    <li><input-example :example="mokujiArticleTitleForLimited">先生用</input-example></li>
+                    <li>
+                        <input-example :example="mokujiArticleTitleForGenelal">一般用</input-example>
+                    </li>
+                    <li>
+                        <input-example :example="mokujiArticleTitleForLimited">先生用</input-example>
+                    </li>
                 </ul>
             </li>
             <li>
@@ -103,8 +111,8 @@
                 </select>
             </div>
             <div>
-                <label>末尾に追加したい文字（空欄可）：</label>
-                <input type="text" v-model="trailing">
+                <label><input type="checkbox" v-model="modifyUrl">末尾に文字を追加する：</label>
+                <input type="text" v-model="trailing" :disabled="!(modifyUrl)">
             </div>
         </div>
         <ul>
@@ -214,6 +222,7 @@
                     userInputBookTitle: "心理学スタディメイト",
                     userInputFivecode: "20002",
                     supportIdx: "1",
+                    modifyUrl: false,
                     trailing: "movie",
                     pageName: "Chapter structure"
                 }
@@ -261,11 +270,17 @@
                 supportPageIdx: function () {
                     return ("0" + this.supportIdx).slice(-2);
                 },
+                urlTrailer: function () {
+                    if (this.modifyUrl) {
+                        return this.trailing;
+                    }
+                    return "";
+                },
                 supportPageUrlForGenelal: function () {
-                    return `https://www.yuhikaku.co.jp/yuhikaku_pr/y-knot/ws/${this.fivecode}p_${this.supportPageIdx}${this.trailing}/`;
+                    return `https://www.yuhikaku.co.jp/yuhikaku_pr/y-knot/ws/${this.fivecode}p_${this.supportPageIdx}${this.urlTrailer}/`;
                 },
                 supportPageUrlForLimited: function () {
-                    return `https://www.yuhikaku.co.jp/yuhikaku_pr/y-knot/ws/${this.fivecode}t_${this.supportPageIdx}${this.trailing}/`;
+                    return `https://www.yuhikaku.co.jp/yuhikaku_pr/y-knot/ws/${this.fivecode}t_${this.supportPageIdx}${this.urlTrailer}/`;
                 },
                 coverImgUrl: function () {
                     return `https://www.yuhikaku.co.jp/uploads/images/L${this.fivecode}.jpg`;

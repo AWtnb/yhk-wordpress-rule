@@ -26,7 +26,7 @@ img {
 .horizon div {
   margin-right: 20px;
 }
-.horizon div input,
+.horizon div input[type="text"],
 .horizon div select {
   min-width: 40%;
 }
@@ -41,7 +41,10 @@ img {
   margin: 0;
   height: 100%;
 }
-.box input[type="text"]:disabled {
+.box input[type="checkbox"] {
+  display: contents;
+}
+.box > input[type="text"]:disabled {
   box-sizing: border-box;
   width: 100%;
   cursor: auto;
@@ -49,7 +52,7 @@ img {
   opacity: 1;
 }
 @media (prefers-color-scheme: light) {
-  input[type="text"]:disabled {
+  .box > input[type="text"]:disabled {
     color: #ff4500;
   }
 }
